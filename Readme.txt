@@ -54,8 +54,40 @@ Cette algorithme à une complexité de O(n*m) où n et la largeur et m la longue
 
 question 5
 list est une liste qui contiendra les cordonées de la fusion de la polyligne et des imeuble.
+list1, list2 sont des liste de coordonée.
 x et y sont les cordonées de départ d'un ineuble, w est sa largeur, h sa hauteur et se sont tous des entiers.
 On initialise x,y,w et h avec les valeurs du premier imeuble.
 on ajoute à list les coordonées (x,y), (x,h), (w,h) et (w,y).
 Pour tous les autres imeubles
- 
+     list1 = list.
+     on initialise anclist1 à vrai.
+     on affecte x,y,w et h avec les valeur de l'imeuble.
+     on vide list2.
+     cpt1 et cp2 sont des entiers initialiser à 1.
+     on ajoute à list2 les coordonées (x,y), (x,h), (w,h) et (w,y).
+     Si list1[0].x < list2[0].x
+     	on ajoute list1[0] et list1.[1] dans list.
+	cpt1++.
+     Sinon
+	on ajoute list2[0] et list2[1] dans list.
+	cpt2++.
+	anclist1 = faux.
+     fin si.
+     Pour tout les éléments de list1 à partir de cpt1
+     	  Si list1[cpt1].y > list2[cpt2].y
+	     Si anclist1 est faux
+	     	on ajoute dans list la coordonée (x du dernier élément de list,list1[cpt1].y).
+	     fin si.
+	     on ajoute list1[cpt1] dans list.
+	     cpt1++.
+	  Sinon 
+	     Si anclist1 est vrai
+	     	on ajoute dans list la coordonée (x du dernier élément de list,list2[cpt2].y).
+	     fin si.
+	     on ajoute list2[cpt2] dans list.
+	     cpt2++.
+	     cpt1++.
+	  fin si.
+      fin pour.
+fin pour.
+on retourn list.
